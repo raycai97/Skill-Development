@@ -1,0 +1,66 @@
+package polymorphism;
+
+/**
+ *
+ * @author Raymond
+ */
+public class Polymorphism {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        Animal myAnimal = new Animal();
+        Cat myCat = new Cat();
+        System.out.println(myAnimal.getNoise(myCat));
+    }
+    
+}
+
+
+package polymorphism;
+
+/**
+ *
+ * @author Raymond
+ */
+public class Dog extends Animal {
+    @Override
+    public String makeNoise() {
+        return "Bark";
+    }
+}
+
+package polymorphism;
+
+/**
+ *
+ * @author Raymond
+ */
+public class Cat extends Animal {
+    @Override
+    public String makeNoise() {
+        return "Meow";
+    }
+}
+
+package polymorphism;
+
+/**
+ *
+ * @author Raymond
+ */
+public class Animal {
+    public Animal() {
+        
+    }
+    
+    public String makeNoise() {
+        return "EEEE";
+    }
+    
+    public static String getNoise(Animal obj) {
+        return obj.makeNoise();
+    }
+}
+

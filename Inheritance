@@ -1,0 +1,130 @@
+package inheritance;
+
+/**
+ *
+ * @author Raymond
+ */
+public class Inheritance {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        
+        Person myPerson = new Person();        
+        myPerson.setName("Yenni");
+        
+        Student myStudent = new Student();       
+        myStudent.setName("Wilbert");
+        
+        Employee myEmployee = new Employee();
+        
+        Faculty myFaculty = new Faculty();
+        myFaculty.setName("Jacob");      
+        
+        Staff myStaff = new Staff();
+        
+        System.out.println(Person.testingPoly(myPerson));
+        System.out.println(Person.testingPoly(myStudent));
+        System.out.println(Person.testingPoly(myFaculty));
+        
+        System.out.println(myPerson.toString());
+        System.out.println(myStudent.toString());
+        System.out.println(myEmployee.toString());
+        System.out.println(myFaculty.toString());
+        System.out.println(myStaff.toString());
+        
+        int y = 9;
+        testing(y);
+        testing(10);
+    }
+    
+    public static void testing(int x) {
+        System.out.println("the testing method is called");        
+        if (x == 10) {
+            System.out.println("shards");
+        }
+    }
+}
+
+package inheritance;
+
+/**
+ *
+ * @author Raymond
+ */
+
+//Superclass
+//all subclasses will share these attributes
+
+public class Person {
+    
+    // Common attributes shared by all Person
+    private String name;
+    private String address;
+    private String zID;
+    private String email;
+    
+    // Default constructor with no-args
+    public Person(){
+        this.name = "Person";
+        this.address = "Default 123";
+        this.zID = "0000";
+        this.email = "admin@admin";
+    }
+
+    public Person(String name, String address, String zID, String email) {
+        this.name = name;
+        this.address = address;
+        this.zID = zID;
+        this.email = email;
+    }
+    
+    // getter and setter for name
+    public String getName(){
+        return name;
+    }
+    
+    // String name <-- local variable (passing in as an arg)
+    // in the main method: you do setName("Tim");
+    // String name = Tim;
+    // this.name = this = attached to the object
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getzID() {
+        return zID;
+    }
+
+    public void setzID(String zID) {
+        this.zID = zID;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
+    // toString method
+    public String toString(){
+        return "From Person class: " + getName();
+    }
+    
+    // We are excting a person object as the parameter
+    // Dynamic Binding: when you pass in a student object, complier will decide which toString method to call
+    public static String testingPoly(Person obj) {
+        return "Poly in action: " + obj.toString();
+    }
+}
